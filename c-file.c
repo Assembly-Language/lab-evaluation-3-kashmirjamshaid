@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 
-void __stdcall asmfunc(int p1 ,int p2);
+void __stdcall asmfunc(int*arr ,int*count , int*Sum);
 
 #ifdef __cplusplus
 }
@@ -17,18 +17,29 @@ void __stdcall asmfunc(int p1 ,int p2);
 
 int main() {
     system("cls");
-    int abc;
-    printf("assembly proc calling from  from C! \n");
-getch();
-
-    
-    asmfunc(3,5); //assembly proc calling
+    int arr[]={1,2 ,3 ,-3,-5,-6,9,10} ;
+    int count=0 ;
+    int Sum = 0 ;
    
-   getch();
-    
-    
-    printf("back to  C! \n"); // printing in c
-    
+   // for Showing the Arrays how many times it will execute 
+    printf("The array is:");
+    for(int i=0;i<8;i++){
+        printf("%d",arr[i]);
+        printf(" ");
+    }
+    printf("\n");
+    getch();  
+    asmfunc(arr, &Sum , &count); 
+    if(count==0){
+        printf("there is no negative  number");
+        return 0;
+    }
+    else{
+    printf("The Sum of Negative  is: %d\n", Sum);
+    printf("The Total  of Negative  is: %d\n", count);
+
+    }
+
   
     
     return 0;
